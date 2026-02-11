@@ -1,136 +1,97 @@
-import random
+# Valentine_Proposal.py
 import streamlit as st
+import random
+import time
+from streamlit.components.v1 import html
 
-st.set_page_config(page_title="Valentine", layout="wide")
+st.set_page_config(page_title="Be My Valentine? 💘", page_icon="❤️", layout="centered")
 
-NO_MESSAGES = [
-    "Are you sure?",
-    "I think u misclicked…",
-    "Pls no Aditi ",
-    "Be so fr rn",
-    "Last chance twin",
-]
-
-# --- Session state init ---
-if "accepted" not in st.session_state:
+# ---- Session state ----
+if 'accepted' not in st.session_state:
     st.session_state.accepted = False
+if 'no_button_disabled' not in st.session_state:
+    st.session_state.no_button_disabled = False
 
-if "no_clicks" not in st.session_state:
-    st.session_state.no_clicks = 0
+# Heart explosion & cute animation (very simple JS + emoji version)
+cute_html = """
+<div style="text-align:center; padding: 40px 0;">
+    <h1 style="font-size: 3.8rem; color: #ff3366; margin:0;">YESSSSS!!! 🥰💖</h1>
+    <p style="font-size: 1.6rem; color: #ff6699; margin: 20px 0;">
+        You just made me the happiest person in the world! ✨
+    </p>
 
-if "no_log" not in st.session_state:
-    st.session_state.no_log = []
+    <div style="font-size: 4rem; margin: 30px 0; animation: heartBeat 1.2s infinite;">
+        ❤️❤️❤️❤️❤️
+    </div>
 
-if "no_pos" not in st.session_state:
-    # values in percent
-    st.session_state.no_pos = {"top": 45, "left": 55}
+  
+    <div style="margin-top: 40px; font-size: 2.8rem;">
+        🥰 💗 🌸 🍓 ✨ 💘 🫶
+    </div>
+</div>
 
-def randomize_no_position():
-    # keep it reasonably on-screen
-    st.session_state.no_pos = {
-        "top": random.randint(15, 75),
-        "left": random.randint(10, 85),
+<style>
+    @keyframes heartBeat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.25); }
+        100% { transform: scale(1); }
     }
+</style>
+"""
 
-def handle_no():
-    i = st.session_state.no_clicks
-    if i < len(NO_MESSAGES):
-        st.session_state.no_log.append(NO_MESSAGES[i])
-    st.session_state.no_clicks += 1
-    randomize_no_position()
-    st.rerun()
+# ───────────────────────────────────────────────
+#               MAIN PAGE
+# ───────────────────────────────────────────────
 
-def handle_yes():
-    st.session_state.accepted = True
-    st.rerun()
-
-# --- CSS to position the No button randomly ---
-st.markdown(
-    f"""
-    <style>
-      /* Ensure the container can position children */
-      .valentine-stage {{
-        position: relative;
-        height: 70vh;
-        border: 1px solid rgba(0,0,0,0.08);
-        border-radius: 12px;
-        padding: 24px;
-        overflow: hidden;
-      }}
-
-      /* Place the "No" button container absolutely */
-      .no-button-wrap {{
-        position: absolute;
-        top: {st.session_state.no_pos["top"]}%;
-        left: {st.session_state.no_pos["left"]}%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-      }}
-
-      /* Make bottom messages area stick to bottom inside stage */
-      .bottom-log {{
-        position: absolute;
-        left: 24px;
-        right: 24px;
-        bottom: 18px;
-        z-index: 2;
-      }}
-
-      /* Slightly enlarge buttons */
-      div.stButton > button {{
-        padding: 0.7rem 1.1rem;
-        font-size: 1.05rem;
-        border-radius: 10px;
-      }}
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-# --- UI ---
 if not st.session_state.accepted:
-    st.markdown("## Will you be my Valentine?")
 
-    # Placeholder for image/gif on the yes/no screen
-    st.markdown("### (Place your picture/gif here)")
-    st.caption("Replace this section with st.image(...) or st.video(...) later.")
+    st.title("✨ Will You Be My Valentine? 💕")
 
-    # Create a "stage" area to hold floating No button + messages
-    st.markdown('<div class="valentine-stage">', unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 2, 1])
 
-    # YES button (normal layout)
-    col1, col2, col3 = st.columns([1, 1, 6])
-    with col1:
-        st.button("Yes", on_click=handle_yes)
+    with col2:
 
-    # NO button (floating). We render it inside an HTML wrapper.
-    # When no_clicks >= len(NO_MESSAGES), hide the No button entirely.
-    if st.session_state.no_clicks < len(NO_MESSAGES):
-        st.markdown('<div class="no-button-wrap">', unsafe_allow_html=True)
-        st.button("No", key="no_btn", on_click=handle_no)
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown("<br>" * 3, unsafe_allow_html=True)
 
-    # Bottom message log
-    st.markdown('<div class="bottom-log">', unsafe_allow_html=True)
-    if st.session_state.no_log:
-        st.markdown("**" + st.session_state.no_log[-1] + "**")
-    else:
-        st.markdown("&nbsp;", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+        yes = st.button(
+            "YES! Obviously! 💘",
+            type="primary",
+            use_container_width=True,
+            key="yes_btn"
+        )
 
-    st.markdown("</div>", unsafe_allow_html=True)
+        # ─── IF YES IS CLICKED ───
+        if yes:
+            st.session_state.accepted = True
+            st.session_state.no_button_disabled = True  # 🔥 hide NO immediately
+            st.balloons()
+            st.snow()
+            time.sleep(0.4)
+            st.rerun()
+
+        # ─── NO BUTTON (only when YES not clicked) ───
+        if not st.session_state.no_button_disabled:
+
+            cols = st.columns(5)
+            bad_pos = random.randint(0, 4)
+
+            with cols[bad_pos]:
+                st.button(
+                    "No 😿",
+                    key=f"no_{random.randint(1, 999999)}"
+                )
 
 else:
-    st.markdown("## you+me forever")
+    # ─── SUCCESS SCREEN ───────────────────────────────────────
+    st.empty()
 
-    # Placeholder for image/gif on the accepted screen
-    st.markdown("### (Place your picture/gif here)")
-    st.caption("Replace this with st.image(...) or st.video(...) later.")
+    html(cute_html, height=600)
 
-    # Optional reset for testing
-    if st.button("Reset"):
+    st.markdown("<br><br>", unsafe_allow_html=True)
+
+    if st.button("I want to say YES again 💕", type="primary"):
         st.session_state.accepted = False
-        st.session_state.no_clicks = 0
-        st.session_state.no_log = []
-        st.session_state.no_pos = {"top": 45, "left": 55}
+        st.session_state.no_button_disabled = False
         st.rerun()
+
+    st.caption("Made with love & a little bit of evil genius 😈")
