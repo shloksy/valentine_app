@@ -110,7 +110,7 @@ if st.session_state.stage == "ask":
             st.button("No ❌", on_click=click_no)
             st.markdown("</div>", unsafe_allow_html=True)
         else:
-            st.markdown('<div class="msg">Okay… I\\'ll take that as a Yes </div>', unsafe_allow_html=True)
+            st.markdown('<div class="msg">Okay… I\\'ll take that as a Yes </div>'', unsafe_allow_html=True)
 
     st.markdown('<div class="hint">Tip: once hosted, she just opens a link and clicks.</div>', unsafe_allow_html=True)
 
