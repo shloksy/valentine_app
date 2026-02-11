@@ -14,20 +14,16 @@ if 'no_button_disabled' not in st.session_state:
 
 # Heart explosion & cute animation (very simple JS + emoji version)
 cute_html = """
-<div style="text-align:center; padding: 40px 0; font-family: palatino;">
-    <h1 style="font-size: 3.8rem; color: #ff3366; margin:0;">YESSSSS!!! 🥰💖</h1>
+<div style="text-align:center; padding: 40px 0; font-family: cursive;">
+    <h1 style="font-size: 3.8rem; color: #ff3366; margin:0;">YEEEEE 🥰💖</h1>
     <p style="font-size: 1.6rem; color: #ff6699; margin: 20px 0;">
-        You just made me the happiest person in the world! ✨
+        You're literally goated 😤
     </p>
 
     <div style="font-size: 4rem; margin: 30px 0; animation: heartBeat 1.2s infinite;">
         ❤️❤️❤️❤️❤️
     </div>
 
-  
-    <div style="margin-top: 40px; font-size: 2.8rem;">
-        🥰 💗 🌸 🍓 ✨ 💘 🫶
-    </div>
 </div>
 
 <style>
