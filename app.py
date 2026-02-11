@@ -1,4 +1,5 @@
 import streamlit as st
+import random
 
 st.set_page_config(page_title="Valentine 💘", page_icon="💘", layout="centered")
 
@@ -8,10 +9,10 @@ YES_SCREEN_MEDIA = None  # put a URL or upload below; None = placeholder
 
 NO_MESSAGES = [
     "Are you sure? 😳",
-    "I think you misclicked…",
-    "No way you meant that 😭",
-    "Okay but like… really sure?",
-    "Last chance 😤",
+    "I think u misclicked…",
+    "Pls no Aditi 😭",
+    "Be so fr rn",
+    "Last chance twin 😤",
 ]
 
 # ---- Session state init ----
@@ -19,13 +20,21 @@ if "stage" not in st.session_state:
     st.session_state.stage = "ask"  # "ask" or "yes"
 if "no_clicks" not in st.session_state:
     st.session_state.no_clicks = 0
+if "button_position" not in st.session_state:
+    st.session_state.button_position = {"left": "50%", "top": "50%"}
 
 def reset():
     st.session_state.stage = "ask"
     st.session_state.no_clicks = 0
+    st.session_state.button_position = {"left": "50%", "top": "50%"}
 
 def click_no():
     st.session_state.no_clicks += 1
+    # Generate random position
+    st.session_state.button_position = {
+        "left": f"{random.randint(10, 90)}%",
+        "top": f"{random.randint(10, 90)}%"
+    }
 
 def click_yes():
     st.session_state.stage = "yes"
@@ -48,6 +57,7 @@ st.markdown(
       .msg { text-align: center; font-size: 20px; margin-top: 10px; }
       .media-box { display:flex; justify-content:center; margin-top: 10px; margin-bottom: 10px; }
       .hint { text-align:center; font-size: 12px; opacity: 0.7; margin-top: 30px; }
+      .moving-button { position: fixed; z-index: 999; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -89,20 +99,23 @@ if st.session_state.stage == "ask":
 
     with col2:
         if not hide_no:
-            # Wrap the "No" button in a scaled container
+            # Position the No button at a random location
+            left = st.session_state.button_position["left"]
+            top = st.session_state.button_position["top"]
+            
             st.markdown(f"""
-                <div class="center" style="transform: scale({scale}); transform-origin: center;">
+                <div class="moving-button" style="left: {left}; top: {top}; transform: translate(-50%, -50%) scale({scale});">
             """, unsafe_allow_html=True)
             st.button("No ❌", on_click=click_no)
             st.markdown("</div>", unsafe_allow_html=True)
         else:
-            st.markdown('<div class="msg">Okay… I’ll take that as a Yes 😌</div>', unsafe_allow_html=True)
+            st.markdown('<div class="msg">Okay… I'll take that as a Yes 😌</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="hint">Tip: once hosted, she just opens a link and clicks.</div>', unsafe_allow_html=True)
 
 else:
     st.markdown('<div class="val-title">you + me forever 💘</div>', unsafe_allow_html=True)
-    st.markdown('<div class="val-sub">(I knew you’d say yes 😎)</div>', unsafe_allow_html=True)
+    st.markdown('<div class="val-sub">(I knew you'd say yes 😎)</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="media-box">', unsafe_allow_html=True)
     if YES_SCREEN_MEDIA:
