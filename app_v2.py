@@ -51,7 +51,7 @@ if not st.session_state.accepted:
 
     st.title("✨ Will You Be My Valentine? 💕")
 
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1, 5, 1])
 
     with col2:
 
@@ -72,7 +72,7 @@ if not st.session_state.accepted:
         yes = st.button(
             "YES! 💘",
             type="primary",
-            use_container_width=True,
+            #use_container_width=True,
             key="yes_btn"
         )
 
