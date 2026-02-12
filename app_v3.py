@@ -65,4 +65,70 @@ cute_html = f"""
 #               MAIN PAGE
 # ───────────────────────────────────────────────
 
-if not st.session
+if not st.session_state.accepted:
+
+    st.title("✨ Will You Be My Valentine? 💕")
+
+    col1, col2, col3 = st.columns([1, 2, 1])
+
+    with col2:
+        st.markdown("<br>" * 3, unsafe_allow_html=True)
+
+        yes = st.button(
+            "YES! Obviously! 💘",
+            type="primary",
+            use_container_width=True,
+            key="yes_btn"
+        )
+
+        if yes:
+            st.session_state.accepted = True
+            st.session_state.no_button_disabled = True
+            st.balloons()
+            time.sleep(2)
+            st.rerun()
+
+    # ─── Floating NO button ───
+    if not st.session_state.no_button_disabled:
+        scale = max(0.4, 1 - (st.session_state.no_clicks / 6) * 0.6)
+
+        st.markdown(
+            f"""
+            <style>
+              .no-wrap {{
+                position: fixed;
+                top: {st.session_state.no_pos["top"]}%;
+                left: {st.session_state.no_pos["left"]}%;
+                transform: translate(-50%, -50%) scale({scale});
+                z-index: 9999;
+              }}
+              .no-wrap div.stButton > button {{
+                width: 260px !important;
+                max-width: 260px !important;
+              }}
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        st.markdown('<div class="no-wrap">', unsafe_allow_html=True)
+        st.button(
+            "No 😿",
+            on_click=move_no,
+            key=f"no_btn_{st.session_state.no_clicks}"
+        )
+        st.markdown("</div>", unsafe_allow_html=True)
+
+else:
+    # ─── SUCCESS SCREEN ───
+    st.empty()
+    html(cute_html, height=900, scrolling=True)
+
+    st.markdown("<br><br>", unsafe_allow_html=True)
+
+    if st.button("I want to say YES again 💕", type="primary"):
+        st.session_state.accepted = False
+        st.session_state.no_button_disabled = False
+        st.session_state.no_clicks = 0
+        st.session_state.no_pos = {"top": 60, "left": 50}
+        st.rerun()
