@@ -13,6 +13,8 @@ if 'accepted' not in st.session_state:
 if 'no_button_disabled' not in st.session_state:
     st.session_state.no_button_disabled = False
 
+NO_MESSAGES = [ "Are you sure?", "I think u misclicked…", "Pls no Aditi ", "Be so fr rn", "Cmon twin", "Wrong button bub", "Quit playin jit", "Ur lucky ur beautiful"]
+
 # Load images
 success_screen_img = base64.b64encode(open("images/hq720.jpg", "rb").read()).decode()
 
@@ -56,7 +58,8 @@ if not st.session_state.accepted:
         st.markdown("<br>" * 3, unsafe_allow_html=True)
 
         yes = st.button(
-            "YES! Obviously! 💘",
+            # "YES! 💘",
+            label="""<p style="font-size: 24px; text-align: center;">YES! 💘</p>""",
             type="primary",
             use_container_width=True,
             key="yes_btn"
@@ -78,7 +81,7 @@ if not st.session_state.accepted:
 
             with cols[bad_pos]:
                 st.button(
-                    "No 😿",
+                    "No thanks 😿",
                     key=f"no_{random.randint(1, 999999)}"
                 )
 
