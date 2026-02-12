@@ -81,6 +81,7 @@ if not st.session_state.accepted:
         st.markdown("<br>" * 3, unsafe_allow_html=True)
 
         st.image("images/pls.gif")
+        st.write("#")
         
         yes = st.button(
             "YES! 💘",
@@ -117,7 +118,7 @@ if not st.session_state.accepted:
                 st.markdown(
                     """
                     <style>
-                    .fixed-msg { position: fixed; bottom: 500px; left: 0; width: 100%; text-align:center; font-size: 22px; }
+                    .fixed-msg { position: fixed; bottom: 250px; left: 0; width: 100%; text-align:center; font-size: 22px; }
                     </style>
                     """,
                     unsafe_allow_html=True,
