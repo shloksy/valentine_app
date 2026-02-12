@@ -87,7 +87,7 @@ else:
     # ─── SUCCESS SCREEN ───────────────────────────────────────
     st.empty()
 
-    html(cute_html, height=600)
+    html(cute_html, height=850)
 
     st.markdown("<br><br>", unsafe_allow_html=True)
 
