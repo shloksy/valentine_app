@@ -57,9 +57,20 @@ if not st.session_state.accepted:
 
         st.markdown("<br>" * 3, unsafe_allow_html=True)
 
+        st.markdown(
+            """
+            <style>
+            div.stButton > button {
+                font-size: 24px;
+                padding: 0.8rem 1.2rem;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+        
         yes = st.button(
-            # "YES! 💘",
-            label="""<p style="font-size: 24px; text-align: center;">YES! 💘</p>""",
+            "YES! 💘",
             type="primary",
             use_container_width=True,
             key="yes_btn"
