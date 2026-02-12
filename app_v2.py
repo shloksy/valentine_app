@@ -5,7 +5,7 @@ import time
 import base64
 from streamlit.components.v1 import html
 
-st.set_page_config(page_title="Be My Valentine? 💘", page_icon="❤️", layout="centered")
+st.set_page_config(page_title="Be My Valentine? 💘", page_icon="❤️‍🔥", layout="centered")
 
 # ---- Session state ----
 if 'accepted' not in st.session_state:
@@ -17,11 +17,12 @@ if "show_no_msg" not in st.session_state:
 if "last_no_msg" not in st.session_state:
     st.session_state.last_no_msg = ""
 
-no_messages = ["Are you sure?", "I think u misclicked…", 
-               "Pls no Aditi ", "Be so fr rn", "Cmon twin", 
-               "Wrong button bub", "Quit playin jit", 
-               "Ur lucky ur beautiful", "This is just rude",
-               "Im offended", "Whyyyyyy", "Pls pls plsssss"]
+no_messages = ["Are you sure? 🤨", "I think u misclicked…", 
+               "Pls no Aditi🫸", "Be so fr rn", "Cmon twin 😅", 
+               "Wrong button bub", "Quit playin jit 🙃", 
+               "Ur lucky ur beautiful", "This is just rude 😔",
+               "Im offended 😤", "Whyyyyyy 😩", "Pls pls plsssss", 
+               "Ur such a bot", "Aditibot moment 🤖"]
 
 def on_no():
     st.session_state.show_no_msg = True
@@ -33,7 +34,7 @@ success_screen_img = base64.b64encode(open("images/hq720.jpg", "rb").read()).dec
 # Heart explosion & cute animation (very simple JS + emoji version)
 cute_html = f"""
 <div style="text-align:center; padding: 40px 0; font-family: cursive;">
-    <h1 style="font-size: 3.8rem; color: #ff3366; margin:0;">YEEEEE 🥰💖</h1>
+    <h1 style="font-size: 3.8rem; color: #ff3366; margin:0;">YEEEEE ❤️‍🔥🥰💖</h1>
     <p style="font-size: 1.6rem; color: #ff6699; margin: 20px 0;">
         You're literally goated 😤
     </p>
@@ -61,7 +62,7 @@ cute_html = f"""
 
 if not st.session_state.accepted:
 
-    st.title("Will You Be My Valentine? 💕")
+    st.title("Will You Be My Valentine? 💖😍💞🥰💕")
 
     col1, col2, col3 = st.columns([1, 4, 1])
 
