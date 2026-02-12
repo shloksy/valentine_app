@@ -28,7 +28,7 @@ cute_html = f"""
         ❤️❤️❤️❤️❤️
     </div>
 
-    <img src="data:image/jpeg;base64,{success_screen_img}" style="max-width:380px; border-radius:18px; margin:30px 0;" />
+    <img src="data:image/jpeg;base64,{success_screen_img}" style="border-radius:18px;" />
 
 </div>
 
