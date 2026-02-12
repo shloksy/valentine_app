@@ -17,12 +17,22 @@ if "show_no_msg" not in st.session_state:
 if "last_no_msg" not in st.session_state:
     st.session_state.last_no_msg = ""
 
-no_messages = ["Are you sure? 🤨", "I think u misclicked…", 
-               "Pls no Aditi🫸", "Be so fr rn", "Cmon twin 😅", 
-               "Wrong button bub", "Quit playin jit 🙃", 
-               "Ur lucky ur beautiful", "This is just rude 😔",
-               "Im offended 😤", "Whyyyyyy 😩", "Pls pls plsssss", 
-               "Ur such a bot", "Aditibot moment 🤖"]
+no_messages = [
+    "Are you sure? :thinking_face:",
+    "I think u misclicked…",
+    "Pls no Aditi :raised_hand:",
+    "Be so fr rn",
+    "Cmon twin :sweat_smile:",
+    "Wrong button bub",
+    "Quit playin jit :upside_down_face:",
+    "Ur lucky ur beautiful",
+    "This is just rude :pensive:",
+    "Im offended :face_with_symbols_over_mouth:",
+    "Whyyyyyy :weary:",
+    "Pls pls plsssss",
+    "Ur such a bot",
+    "Aditibot moment :robot_face:",
+]
 
 def on_no():
     st.session_state.show_no_msg = True
