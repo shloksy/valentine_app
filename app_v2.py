@@ -86,7 +86,7 @@ if not st.session_state.accepted:
                     "No thanks 😿",
                     key=f"no_{random.randint(1, 999999)}"
                 )
-        st.write(random.choice(no_messages))
+            st.write(random.choice(no_messages))
 
 else:
     # ─── SUCCESS SCREEN ───────────────────────────────────────
