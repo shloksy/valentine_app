@@ -38,7 +38,7 @@ def on_no():
     st.session_state.show_no_msg = True
     st.session_state.last_no_msg = random.choice(no_messages)
 
-# Load images
+# Load image
 success_screen_img = base64.b64encode(open("images/hq720.jpg", "rb").read()).decode()
 
 # Heart explosion & cute animation (very simple JS + emoji version)
@@ -124,6 +124,8 @@ if not st.session_state.accepted:
                     f'<div class="fixed-msg">{st.session_state.last_no_msg}</div>',
                     unsafe_allow_html=True,
                 )
+
+            st.image("images/pls.gif")
 
 
 
