@@ -93,7 +93,16 @@ if not st.session_state.accepted:
                     key=f"no_{random.randint(1, 999999)}"
                 )
             st.write(gap_sizes_rev[gap_index])
-            st.write(random.choice(no_messages))
+            st.markdown(
+                """
+                <style>
+                .fixed-msg { position: fixed; bottom: 30px; left: 0; width: 100%; text-align:center; }
+                </style>
+                """,
+                unsafe_allow_html=True,
+            )
+            st.markdown(f'<div class="fixed-msg">{random.choice(no_messages)}</div>', unsafe_allow_html=True)
+
 
 else:
     # ─── SUCCESS SCREEN ───────────────────────────────────────
