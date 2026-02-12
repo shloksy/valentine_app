@@ -3,7 +3,6 @@ import streamlit as st
 import random
 import time
 import base64
-from streamlit import emoji
 from streamlit.components.v1 import html
 
 st.set_page_config(page_title="Be My Valentine? 💘", page_icon="❤️‍🔥", layout="centered")
@@ -19,25 +18,25 @@ if "last_no_msg" not in st.session_state:
     st.session_state.last_no_msg = ""
 
 no_messages = [
-    "Are you sure? :thinking_face:",
+    "Are you sure? 🤨",
     "I think u misclicked…",
-    "Pls no Aditi :raised_hand:",
+    "Pls no Aditi ✋",
     "Be so fr rn",
-    "Cmon twin :sweat_smile:",
+    "Cmon twin 😅",
     "Wrong button bub",
-    "Quit playin jit :upside_down_face:",
+    "Quit playin jit 🙃",
     "Ur lucky ur beautiful",
-    "This is just rude :pensive:",
-    "Im offended :face_with_symbols_over_mouth:",
-    "Whyyyyyy :weary:",
+    "This is just rude 😔",
+    "Im offended 😤",
+    "Whyyyyyy 😩",
     "Pls pls plsssss",
     "Ur such a bot",
-    "Aditibot moment :robot_face:",
+    "Aditibot moment 🤖",
 ]
 
 def on_no():
     st.session_state.show_no_msg = True
-    st.session_state.last_no_msg = emoji.emojize(random.choice(no_messages))
+    st.session_state.last_no_msg = random.choice(no_messages)
 
 # Load images
 success_screen_img = base64.b64encode(open("images/hq720.jpg", "rb").read()).decode()
