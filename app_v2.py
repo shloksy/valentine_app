@@ -13,7 +13,7 @@ if 'accepted' not in st.session_state:
 if 'no_button_disabled' not in st.session_state:
     st.session_state.no_button_disabled = False
 
-NO_MESSAGES = [ "Are you sure?", "I think u misclicked…", "Pls no Aditi ", "Be so fr rn", "Cmon twin", "Wrong button bub", "Quit playin jit", "Ur lucky ur beautiful"]
+no_messages = [ "Are you sure?", "I think u misclicked…", "Pls no Aditi ", "Be so fr rn", "Cmon twin", "Wrong button bub", "Quit playin jit", "Ur lucky ur beautiful"]
 
 # Load images
 success_screen_img = base64.b64encode(open("images/hq720.jpg", "rb").read()).decode()
@@ -49,7 +49,7 @@ cute_html = f"""
 
 if not st.session_state.accepted:
 
-    st.title("✨ Will You Be My Valentine? 💕")
+    st.title("Will You Be My Valentine? 💕")
 
     col1, col2, col3 = st.columns([1, 4, 1])
 
@@ -72,7 +72,7 @@ if not st.session_state.accepted:
             time.sleep(2)
             st.rerun()
         
-        gap_sizes = ["#","##","###","####","#####","######"]
+        gap_sizes = ["", "#","##","###","####","#####","######"]
         st.write(random.choice(gap_sizes))
         
         # ─── NO BUTTON (only when YES not clicked) ───
@@ -86,6 +86,7 @@ if not st.session_state.accepted:
                     "No thanks 😿",
                     key=f"no_{random.randint(1, 999999)}"
                 )
+        st.write(random.choice(no_messages))
 
 else:
     # ─── SUCCESS SCREEN ───────────────────────────────────────
