@@ -92,8 +92,8 @@ if not st.session_state.accepted:
                 z-index: 9999;
               }}
               .no-wrap div.stButton > button {{
-                width: 260px !important;      /* make it wider */
-                max-width: 260px !important;
+                width: 500px !important;      /* make it wider */
+                max-width: 500px !important;
               }}
             </style>
             """,
@@ -115,5 +115,5 @@ else:
     if st.button("I want to say YES again 💕", type="primary"):
         st.session_state.accepted = False
         st.session_state.no_button_disabled = False
-        st.session_state.no_pos = {"top": 60, "left": 50}
+        st.session_state.no_pos = {"top": 60, "left": 150}
         st.rerun()
