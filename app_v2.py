@@ -80,6 +80,8 @@ if not st.session_state.accepted:
 
         st.markdown("<br>" * 3, unsafe_allow_html=True)
 
+        st.image("images/pls.gif")
+        
         yes = st.button(
             "YES! 💘",
             type="primary",
@@ -124,10 +126,6 @@ if not st.session_state.accepted:
                     f'<div class="fixed-msg">{st.session_state.last_no_msg}</div>',
                     unsafe_allow_html=True,
                 )
-
-            st.image("images/pls.gif")
-
-
 
 else:
     # ─── SUCCESS SCREEN ───────────────────────────────────────
