@@ -71,8 +71,10 @@ if not st.session_state.accepted:
             st.balloons()
             time.sleep(2)
             st.rerun()
-
-        st.write("#")
+        
+        gap_sizes = ["#","##","###","####","#####","######"]
+        st.write(random.choice(gap_sizes))
+        
         # ─── NO BUTTON (only when YES not clicked) ───
         if not st.session_state.no_button_disabled:
 
