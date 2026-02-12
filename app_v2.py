@@ -51,7 +51,7 @@ if not st.session_state.accepted:
 
     st.title("✨ Will You Be My Valentine? 💕")
 
-    col1, col2, col3 = st.columns([1, 5, 1])
+    col1, col2, col3 = st.columns([1, 4, 1])
 
     with col2:
 
@@ -75,8 +75,8 @@ if not st.session_state.accepted:
         # ─── NO BUTTON (only when YES not clicked) ───
         if not st.session_state.no_button_disabled:
 
-            cols = st.columns(4)
-            bad_pos = random.randint(0, 3)
+            cols = st.columns(3)
+            bad_pos = random.randint(0, 2)
 
             with cols[bad_pos]:
                 st.button(
