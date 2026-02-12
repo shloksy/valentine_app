@@ -2,6 +2,7 @@
 import streamlit as st
 import random
 import time
+import base64
 from streamlit.components.v1 import html
 
 st.set_page_config(page_title="Be My Valentine? 💘", page_icon="❤️", layout="centered")
@@ -12,8 +13,11 @@ if 'accepted' not in st.session_state:
 if 'no_button_disabled' not in st.session_state:
     st.session_state.no_button_disabled = False
 
+# Load images
+success_screen_img = base64.b64encode(open("images/hq720.jpg", "rb").read()).decode()
+
 # Heart explosion & cute animation (very simple JS + emoji version)
-cute_html = """
+cute_html = f"""
 <div style="text-align:center; padding: 40px 0; font-family: cursive;">
     <h1 style="font-size: 3.8rem; color: #ff3366; margin:0;">YEEEEE 🥰💖</h1>
     <p style="font-size: 1.6rem; color: #ff6699; margin: 20px 0;">
@@ -24,14 +28,16 @@ cute_html = """
         ❤️❤️❤️❤️❤️
     </div>
 
+    <img src="data:image/jpeg;base64,{success_screen_img}" style="max-width:380px; border-radius:18px; margin:30px 0;" />
+
 </div>
 
 <style>
-    @keyframes heartBeat {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.25); }
-        100% { transform: scale(1); }
-    }
+    @keyframes heartBeat {{
+        0% {{ transform: scale(1); }}
+        50% {{ transform: scale(1.25); }}
+        100% {{ transform: scale(1); }}
+    }}
 </style>
 """
 
