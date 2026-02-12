@@ -81,7 +81,7 @@ if not st.session_state.accepted:
         st.markdown("<br>" * 3, unsafe_allow_html=True)
 
         st.image("images/pls.gif")
-        st.write("##")
+        st.write("####")
         
         yes = st.button(
             "YES! 💘",
