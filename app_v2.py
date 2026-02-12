@@ -79,8 +79,12 @@ if not st.session_state.accepted:
     with col2:
 
         st.markdown("<br>" * 3, unsafe_allow_html=True)
-
-        st.image("images/pls.gif")
+        
+        img_col1, img_col2 = st.columns(2)
+        with img_col1:
+            st.image("images/pls.gif")
+        with img_col2:
+            st.image("images/patrick.gif")
         st.write("####")
         
         yes = st.button(
@@ -118,7 +122,7 @@ if not st.session_state.accepted:
                 st.markdown(
                     """
                     <style>
-                    .fixed-msg { position: fixed; bottom: 125px; left: 0; width: 100%; text-align:center; font-size: 22px; }
+                    .fixed-msg { position: fixed; bottom: 30px; left: 0; width: 100%; text-align:center; font-size: 22px; }
                     </style>
                     """,
                     unsafe_allow_html=True,
