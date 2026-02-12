@@ -23,7 +23,6 @@ def move_no():
         "top": random.randint(10, 90),
         "left": random.randint(5, 95),
     }
-    st.rerun()
 
 # Load images
 success_screen_img = base64.b64encode(open("images/hq720.jpg", "rb").read()).decode()
