@@ -68,7 +68,7 @@ if not st.session_state.accepted:
             st.session_state.no_button_disabled = True  # 🔥 hide NO immediately
             st.balloons()
             st.snow()
-            time.sleep(0.4)
+            time.sleep(1)
             st.rerun()
 
         # ─── NO BUTTON (only when YES not clicked) ───
@@ -95,5 +95,3 @@ else:
         st.session_state.accepted = False
         st.session_state.no_button_disabled = False
         st.rerun()
-
-    st.caption("Made with love & a little bit of evil genius 😈")
