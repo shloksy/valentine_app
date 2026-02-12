@@ -3,6 +3,7 @@ import streamlit as st
 import random
 import time
 import base64
+from streamlit import emoji
 from streamlit.components.v1 import html
 
 st.set_page_config(page_title="Be My Valentine? 💘", page_icon="❤️‍🔥", layout="centered")
@@ -36,7 +37,7 @@ no_messages = [
 
 def on_no():
     st.session_state.show_no_msg = True
-    st.session_state.last_no_msg = random.choice(no_messages)
+    st.session_state.last_no_msg = emoji.emojize(random.choice(no_messages))
 
 # Load images
 success_screen_img = base64.b64encode(open("images/hq720.jpg", "rb").read()).decode()
