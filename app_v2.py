@@ -77,9 +77,7 @@ if not st.session_state.accepted:
             st.rerun()
         
         gap_sizes = ["", "#","##","###","####","#####","######"]
-        gap_sizes_rev = ["######", "#####","####","###","##","#",""]
-        gap_index = random.randint(0,6)
-        st.write(gap_sizes[gap_index])
+        st.write(random.choice(gap_sizes))
         
         # ─── NO BUTTON (only when YES not clicked) ───
         if not st.session_state.no_button_disabled:
@@ -92,7 +90,7 @@ if not st.session_state.accepted:
                     "No thanks 😿",
                     key=f"no_{random.randint(1, 999999)}"
                 )
-            st.write(gap_sizes_rev[gap_index])
+
             st.markdown(
                 """
                 <style>
