@@ -12,12 +12,20 @@ if 'accepted' not in st.session_state:
     st.session_state.accepted = False
 if 'no_button_disabled' not in st.session_state:
     st.session_state.no_button_disabled = False
+if "show_no_msg" not in st.session_state:
+    st.session_state.show_no_msg = False
+if "last_no_msg" not in st.session_state:
+    st.session_state.last_no_msg = ""
 
 no_messages = ["Are you sure?", "I think u misclicked…", 
                "Pls no Aditi ", "Be so fr rn", "Cmon twin", 
                "Wrong button bub", "Quit playin jit", 
                "Ur lucky ur beautiful", "This is just rude",
                "Im offended", "Whyyyyyy", "Pls pls plsssss"]
+
+def on_no():
+    st.session_state.show_no_msg = True
+    st.session_state.last_no_msg = random.choice(no_messages)
 
 # Load images
 success_screen_img = base64.b64encode(open("images/hq720.jpg", "rb").read()).decode()
@@ -88,18 +96,24 @@ if not st.session_state.accepted:
             with cols[bad_pos]:
                 st.button(
                     "No thanks 😿",
-                    key=f"no_{random.randint(1, 999999)}"
+                    key=f"no_{random.randint(1, 999999)}",
+                    on_click=on_no
                 )
 
-            st.markdown(
-                """
-                <style>
-                .fixed-msg { position: fixed; bottom: 500px; left: 0; width: 100%; text-align:center; }
-                </style>
-                """,
-                unsafe_allow_html=True,
-            )
-            st.markdown(f'<div class="fixed-msg">{random.choice(no_messages)}</div>', unsafe_allow_html=True)
+            if st.session_state.show_no_msg:
+                st.markdown(
+                    """
+                    <style>
+                    .fixed-msg { position: fixed; bottom: 30px; left: 0; width: 100%; text-align:center; font-size: 22px; }
+                    </style>
+                    """,
+                    unsafe_allow_html=True,
+                )
+                st.markdown(
+                    f'<div class="fixed-msg">{st.session_state.last_no_msg}</div>',
+                    unsafe_allow_html=True,
+                )
+
 
 
 else:
