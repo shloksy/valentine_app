@@ -75,8 +75,8 @@ if not st.session_state.accepted:
         # ─── NO BUTTON (only when YES not clicked) ───
         if not st.session_state.no_button_disabled:
 
-            cols = st.columns(5)
-            bad_pos = random.randint(0, 4)
+            cols = st.columns(3)
+            bad_pos = random.randint(0, 2)
 
             with cols[bad_pos]:
                 st.button(
