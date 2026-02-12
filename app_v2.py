@@ -78,7 +78,7 @@ if not st.session_state.accepted:
         
         gap_sizes = ["", "#","##","###","####","#####","######"]
         gap_sizes_rev = ["######", "#####","####","###","##","#",""]
-        gap_index = random.randint(0,5)
+        gap_index = random.randint(0,6)
         st.write(gap_sizes[gap_index])
         
         # ─── NO BUTTON (only when YES not clicked) ───
