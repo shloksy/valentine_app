@@ -62,7 +62,7 @@ cute_html = f"""
 
 if not st.session_state.accepted:
 
-    st.title("Will You Be My Valentine? 💖😍💞🥰💕")
+    st.title("Will You Be My Valentine? 😍💖🥰💕")
 
     col1, col2, col3 = st.columns([1, 4, 1])
 
