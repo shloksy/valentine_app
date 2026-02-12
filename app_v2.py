@@ -96,7 +96,7 @@ if not st.session_state.accepted:
             st.markdown(
                 """
                 <style>
-                .fixed-msg { position: fixed; bottom: 300px; left: 0; width: 100%; text-align:center; }
+                .fixed-msg { position: fixed; bottom: 500px; left: 0; width: 100%; text-align:center; }
                 </style>
                 """,
                 unsafe_allow_html=True,
